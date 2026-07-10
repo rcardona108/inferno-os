@@ -9,7 +9,7 @@
 
 #include	<sys/types.h>
 #include	<sys/stat.h>
-#include	<fcntl.h>
+#include	<sys/fcntl.h>
 #include	<sys/socket.h>
 #include	<sys/un.h>
 #include	<utime.h>
@@ -991,7 +991,7 @@ newuname(char *name)
 
 	p = getpwnam(name);
 	if(p == nil)
-		return nil;
+		return newuser(getuid(), getgid(), eve, 0);
 	return newuser(p->pw_uid, p->pw_gid, name, 0);
 }
 
@@ -1002,7 +1002,7 @@ newuid(int id)
 
 	p = getpwuid(id);
 	if(p == nil)
-		return nil;
+		return newuser(getuid(), getgid(), eve, 0);
 	return newuser(p->pw_uid, p->pw_gid, p->pw_name, 0);
 }
 
@@ -1033,7 +1033,21 @@ newgroup(struct group *g)
 static User*
 newgid(int id)
 {
-	return newgroup(getgrgid(id));
+	struct group g;
+	struct group *gp;
+	char *members[1];
+
+	gp = getgrgid(id);
+	if(gp != nil)
+		return newgroup(gp);
+	else {
+		g.gr_gid = id;
+		g.gr_name = eve;
+		g.gr_passwd = nil;
+		members[0] = nil;
+		g.gr_mem = members;
+		return newgroup(&g);
+	}
 }
 
 static User*

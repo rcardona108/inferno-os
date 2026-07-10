@@ -1036,6 +1036,7 @@ vmachine(void *a)
 	}
 
 	cycles = 0;
+	//Essentially the loop for the op sys
 	for(;;) {
 		if(tready(nil) == 0) {
 			execatidle();
@@ -1048,7 +1049,9 @@ vmachine(void *a)
 			iyield();
 			cycles = 0;
 		}
-
+		// the heart of everything
+		//grab the first process run it, move to tail of the loop
+		//do it again
 		r = isched.runhd;
 		if(r != nil) {
 			o = r->osenv;
@@ -1068,6 +1071,7 @@ vmachine(void *a)
 			}
 			up->env = &up->defenv;
 		}
+		//garbage collector stuff
 		if(isched.runhd != nil)
 		if((++gccounter&0xFF) == 0 || memlow()) {
 			gcbusy++;
@@ -1087,16 +1091,21 @@ disinit(void *a)
 	Osenv *o;
 	Module *root;
 	char *initmod = a;
+	extern ulong kerndate;
 
 	if(waserror())
 		panic("disinit error: %r");
 
 	if(vflag)
 		print("Initial Dis: \"%s\"\n", initmod);
+	
+	print("%s\n", eve);
+
+	print("%d\n", kerndate);
 
 	fmtinstall('D', Dconv);
 
-	FPinit();
+	FPinit(); //initialize floating point
 	FPsave(&up->env->fpu);
 
 	opinit();
@@ -1125,7 +1134,8 @@ disinit(void *a)
 
 	isched.idle = 1;
 	poperror();
-	vmachine(nil);
+	//core loop of the operating system running while the system is up 
+	vmachine(nil); 
 }
 
 void

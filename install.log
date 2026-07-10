@@ -1,0 +1,2075 @@
+(cd lib9; mk  install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/lib9.a sbrk-posix.o isnan-posix.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - sbrk-posix.o
+r - isnan-posix.o
+(cd libbio; mk  install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libbio.a brdstr.o bread.o bseek.o bvprint.o bwrite.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - brdstr.o
+r - bread.o
+r - bseek.o
+r - bvprint.o
+r - bwrite.o
+(cd libmp; mk  install)
+(cd port; mk  SYSTARG=Linux OBJTYPE=386 install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libmp.a mpexp.o mpmod.o mpextendedgcd.o mpinvert.o mprand.o crt.o mptoi.o mptoui.o mptov.o mptouv.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - mpexp.o
+r - mpmod.o
+r - mpextendedgcd.o
+r - mpinvert.o
+r - mprand.o
+r - crt.o
+r - mptoi.o
+r - mptoui.o
+r - mptov.o
+r - mptouv.o
+(cd libsec; mk  install)
+(cd port; mk  SYSTARG=Linux OBJTYPE=386 install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libsec.a rsadecrypt.o rsaalloc.o rsaprivtopub.o eggen.o egencrypt.o egdecrypt.o egalloc.o egprivtopub.o egsign.o egverify.o dsagen.o dsaalloc.o dsaprivtopub.o dsasign.o dsaverify.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - rsadecrypt.o
+r - rsaalloc.o
+r - rsaprivtopub.o
+r - eggen.o
+r - egencrypt.o
+r - egdecrypt.o
+r - egalloc.o
+r - egprivtopub.o
+r - egsign.o
+r - egverify.o
+r - dsagen.o
+r - dsaalloc.o
+r - dsaprivtopub.o
+r - dsasign.o
+r - dsaverify.o
+(cd libmath; mk  install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libmath.a s_scalbn.o s_sin.o s_tan.o s_tanh.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - s_scalbn.o
+r - s_sin.o
+r - s_tan.o
+r - s_tanh.o
+(cd utils/iyacc; mk  install)
+cc -m32  -o o.out yacc.o /home/rac379/inferno-os/Linux/386/lib/libbio.a /home/rac379/inferno-os/Linux/386/lib/lib9.a 
+/usr/bin/ld: yacc.o: in function `setup':
+/home/rac379/inferno-os/utils/iyacc/yacc.c:1218: warning: the use of `mktemp' is dangerous, better use `mkstemp' or `mkdtemp'
+rm -f /home/rac379/inferno-os/Linux/386/bin/iyacc && cp o.out /home/rac379/inferno-os/Linux/386/bin/iyacc
+(cd limbo; mk  install)
+cc -c -m32 -DINCPATH="/home/rac379/inferno-os/module" -g -O -fno-strict-aliasing -fno-aggressive-loop-optimizations -fcommon -Wuninitialized -Wunused-variable -Wreturn-type -Wimplicit -I/home/rac379/inferno-os/Linux/386/include -I/home/rac379/inferno-os/include -DLINUX_386 -o asm.o asm.c
+cc -c -m32 -DINCPATH="/home/rac379/inferno-os/module" -g -O -fno-strict-aliasing -fno-aggressive-loop-optimizations -fcommon -Wuninitialized -Wunused-variable -Wreturn-type -Wimplicit -I/home/rac379/inferno-os/Linux/386/include -I/home/rac379/inferno-os/include -DLINUX_386 -o com.o com.c
+cc -m32  -o o.out asm.o com.o decls.o dis.o dtocanon.o ecom.o gen.o lex.o nodes.o optab.o optim.o sbl.o stubs.o typecheck.o types.o y.tab.o /home/rac379/inferno-os/Linux/386/lib/libbio.a /home/rac379/inferno-os/Linux/386/lib/libmath.a /home/rac379/inferno-os/Linux/386/lib/libsec.a /home/rac379/inferno-os/Linux/386/lib/libmp.a /home/rac379/inferno-os/Linux/386/lib/lib9.a 
+rm -f /home/rac379/inferno-os/Linux/386/bin/limbo && cp o.out /home/rac379/inferno-os/Linux/386/bin/limbo
+(cd libinterp; mk  install)
+cc -c -m32 -g -O -fno-strict-aliasing -fno-aggressive-loop-optimizations -fcommon -Wuninitialized -Wunused-variable -Wreturn-type -Wimplicit -I/home/rac379/inferno-os/Linux/386/include -I/home/rac379/inferno-os/include -DLINUX_386 alt.c
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libinterp.a alt.o keyring.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - alt.o
+r - keyring.o
+(cd libkeyring; mk  install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libkeyring.a dsaalg.o egalg.o rsaalg.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - dsaalg.o
+r - egalg.o
+r - rsaalg.o
+(cd libdraw; mk  install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libdraw.a writesubfont.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - writesubfont.o
+(cd libprefab; mk  install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libprefab.a textelement.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - textelement.o
+(cd libtk; mk  install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libtk.a textw.o tindx.o tmark.o ttags.o twind.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - textw.o
+r - tindx.o
+r - tmark.o
+r - ttags.o
+r - twind.o
+(cd libfreetype; mk  install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libfreetype.a pshinter.o pfr.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - pshinter.o
+r - pfr.o
+(cd libmemdraw; mk  install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libmemdraw.a draw.o load.o unload.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - draw.o
+r - load.o
+r - unload.o
+(cd libmemlayer; mk  install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libmemlayer.a lorigin.o lsetrefresh.o ltofront.o ltorear.o unload.o lalloc.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - lorigin.o
+r - lsetrefresh.o
+r - ltofront.o
+r - ltorear.o
+r - unload.o
+r - lalloc.o
+(cd libdynld; mk  install)
+ar ruvs /home/rac379/inferno-os/Linux/386/lib/libdynld.a dynld-386.o dynloadfd.o dynld.o
+ar: `u' modifier ignored since `D' is the default (see `U')
+r - dynld-386.o
+r - dynloadfd.o
+r - dynld.o
+(cd utils/data2c; mk  install)
+cc -m32  -o o.out data2c.o /home/rac379/inferno-os/Linux/386/lib/libbio.a /home/rac379/inferno-os/Linux/386/lib/lib9.a 
+rm -f /home/rac379/inferno-os/Linux/386/bin/data2c && cp o.out /home/rac379/inferno-os/Linux/386/bin/data2c
+(cd utils/ndate; mk  install)
+cc -m32  -o o.out ndate.o /home/rac379/inferno-os/Linux/386/lib/lib9.a 
+rm -f /home/rac379/inferno-os/Linux/386/bin/ndate && cp o.out /home/rac379/inferno-os/Linux/386/bin/ndate
+(cd emu; mk  install)
+(cd Linux; mk  install)
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: cd: can't cd to lib9
+warning: skipping missing include file: mkconfig: No such file or directory
+(cd lib9; mk  install)
+sh: 4: Cannot fork
+mk: for j in ...  : exit status=exit(2)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)
+mk: echo "(cd $SYSTARG; ...  : exit status=exit(1)
+mk: for j in ...  : exit status=exit(1)

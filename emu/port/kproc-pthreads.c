@@ -18,6 +18,10 @@
 #define PTHREAD_STACK_MIN ((size_t)sysconf(_SC_THREAD_STACK_MIN))
 #endif
 
+#ifdef LINUX_386
+#include <sched.h>
+#define pthread_yield() (sched_yield())
+#endif
 
 typedef struct Osdep Osdep;
 struct Osdep {

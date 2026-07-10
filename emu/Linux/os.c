@@ -160,6 +160,7 @@ libinit(char *imod)
 	struct sigaction act;
 	struct passwd *pw;
 	Proc *p;
+	char *username;
 	char sys[64];
 
 	setsid();
@@ -210,8 +211,13 @@ libinit(char *imod)
 	pw = getpwuid(getuid());
 	if(pw != nil)
 		kstrdup(&eve, pw->pw_name);
-	else
-		print("cannot getpwuid\n");
+	else {
+		username = getenv("USER");
+		if(username == nil)
+			print("cannot getpwuid\n");
+		else
+			kstrdup(&eve, username);
+	}
 
 	p->env->uid = getuid();
 	p->env->gid = getgid();

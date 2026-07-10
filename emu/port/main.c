@@ -234,15 +234,15 @@ nofence(void)
 void
 main(int argc, char *argv[])
 {
-	char *opt, *p;
+char *opt, *p;
 	char *enva[20];
 	int envc;
 
-	if(coherence == nil)
+	if(coherence == nil) 
 		coherence = nofence;
-	quotefmtinstall();
+	quotefmtinstall(); //initializes formats in printf
 	savestartup(argc, argv);
-	/* set default root now, so either $EMU or -r can override it later */
+	/* SET DEFAULT root now, so either $EMU or -r can override it later */
 	if((p = getenv("INFERNO")) != nil || (p = getenv("ROOT")) != nil)
 		strecpy(rootdir, rootdir+sizeof(rootdir), p);
 	opt = getenv("EMU");
@@ -253,15 +253,15 @@ main(int argc, char *argv[])
 		option(envc, enva, envusage);
 	}
 	option(argc, argv, usage);
-	eve = strdup("inferno");
+	eve = strdup("inferno"); //strdup duplicates a string (probably unnessacary);
 
 	opt = "interp";
 	if(cflag)
 		opt = "compile";
 
-	if(vflag)
+	if(vflag) //startup message is -v option is set
 		print("Inferno %s main (pid=%d) %s\n", VERSION, getpid(), opt);
-
+	print("Welcome to CS270\n");
 	libinit(imod);
 }
 
@@ -282,18 +282,19 @@ emuinit(void *imod)
 	links();
 	chandevinit();
 
-	if(waserror())
+	if(waserror()) //puts and error on the error handler stack
 		panic("setting root and dot");
 
-	e->pgrp->slash = namec("#/", Atodir, 0, 0);
+	e->pgrp->slash = namec("#/", Atodir, 0, 0);  
 	cnameclose(e->pgrp->slash->name);
 	e->pgrp->slash->name = newcname("/");
 	e->pgrp->dot = cclone(e->pgrp->slash);
 	poperror();
 
 	strcpy(up->text, "main");
-
-	if(kopen("#c/cons", OREAD) != 0)
+	
+	//establish stdin stdout stderr for everything else
+	if(kopen("#c/cons", OREAD) != 0) 		
 		fprint(2, "failed to make fd0 from #c/cons: %r\n");
 	kopen("#c/cons", OWRITE);
 	kopen("#c/cons", OWRITE);
@@ -326,6 +327,7 @@ emuinit(void *imod)
 		free(wdir);
 	}
 
+	//make kernal process which function is to run disinit
 	kproc("main", disinit, imod, KPDUPFDG|KPDUPPG|KPDUPENVG);
 
 	for(;;)
