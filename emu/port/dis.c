@@ -1121,7 +1121,7 @@ disinit(void *a)
 	print("%s\n", eve);
 
 	getCompileTime(time);	
-	print("%dH(s)\t%dM(s)\t%dS(s)\n", time[0], time[1], time[2]);
+	print("%dH\t%dM\t%dS\n", time[0], time[1], time[2]);
 
 	fmtinstall('D', Dconv);
 
