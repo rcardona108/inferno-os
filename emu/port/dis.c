@@ -1083,6 +1083,25 @@ vmachine(void *a)
 		}
 	}
 }
+void
+getCompileTime(uint time[3])
+{
+	extern ulong kerndate;
+	uint hours;
+	uint minutes;
+	uint seconds;
+
+	seconds = kerndate % 86400;
+
+	hours = seconds / 3600;
+	seconds %= 3600;
+	minutes = seconds / 60;
+	seconds %= 60;
+	
+	time[0] = hours;
+	time[1] = minutes;
+	time[2] = seconds;
+}
 
 void
 disinit(void *a)
@@ -1091,7 +1110,7 @@ disinit(void *a)
 	Osenv *o;
 	Module *root;
 	char *initmod = a;
-	extern ulong kerndate;
+	uint time[3];
 
 	if(waserror())
 		panic("disinit error: %r");
@@ -1101,7 +1120,8 @@ disinit(void *a)
 	
 	print("%s\n", eve);
 
-	print("%d\n", kerndate);
+	getCompileTime(time);	
+	print("%dH(s)\t%dM(s)\t%dS(s)\n", time[0], time[1], time[2]);
 
 	fmtinstall('D', Dconv);
 
