@@ -43,7 +43,7 @@ pidlook(int pid)
 	ulong h;
 	Prog **l;
 
-	h = (ulong)pid % nelem(proghash);
+	h = (ulong)pid % nelem(proghash); //nelem returns size of elements in arr
 	for(l = &proghash[h]; *l != nil && (*l)->pid != pid; l = &(*l)->pidlink)
 		;
 	return l;
@@ -135,9 +135,19 @@ newprog(Prog *p, Modlink *m)
 			error(exNomem);
 	}
 
-	n->pid = ++pidnum;
-	if(n->pid <= 0)
-		panic("no pids");
+	n->pid = ++pidnum; 
+
+	if (n->pid < 0)
+		n->pid = 1;
+
+	while (*pidlook(n->pid) != nil){
+		if (++n->pid < 0)
+			n->pid = 1;
+	}
+
+	pidnum = n->pid;
+
+
 	n->group = nil;
 
 	if(isched.tail != nil) {

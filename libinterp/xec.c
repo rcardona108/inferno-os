@@ -657,12 +657,13 @@ OP(call)
 	R.FP = (uchar*)f;
 	JMP(d);
 }
-OP(spawn)
+OP(spawn) //instruction for creating a new process (in the VM)
 {
 	Prog *p;
 
-	p = newprog(currun(), R.M);
-	p->R.PC = *(Inst**)R.d;
+	p = newprog(currun(), R.M); 
+	//how we pretend this process was interrupted right before first instruction
+	p->R.PC = *(Inst**)R.d; 
 	newstack(p);
 	unframe();
 }
