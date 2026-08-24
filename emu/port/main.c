@@ -261,9 +261,6 @@ char *opt, *p;
 
 	if(vflag) //startup message is -v option is set
 		print("Inferno %s main (pid=%d) %s\n", VERSION, getpid(), opt);
-	print("Welcome to CS270\n");
-	print("Running pool test\n");
-	freeListTest();
 
 	libinit(imod);
 }
