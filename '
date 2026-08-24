@@ -151,23 +151,21 @@ poolchain(Pool *p)
 }
 
 void
-pooldel(Pool *p, Bhdr *l)
+pooldel(Pool *p, Bhdr *t)
 {
 	Bhdr* left; 
 	Bhdr* right;
 	
-	left = l->prev;
-	right = l->next;
+	left = t->prev;
+	right = t->next;
 
 	if (left != nil){
 		left->next = right;
-		l->prev = nil;
-	}else{
-		p->head = right;
+		t->prev = nil;
 	}
 	if (right != nil){
 		right->prev = left;
-		l->next = nil;
+		t->next = nil;
 	}
 	return;
 }
@@ -175,13 +173,14 @@ pooldel(Pool *p, Bhdr *l)
 void
 pooladd(Pool *p, Bhdr *q)
 {
+	int size;
 	Bhdr *curr;
 
 	q->magic = MAGIC_F;
 
-	q->next = nil;
-	q->prev = nil;
-	
+	q->next = q;
+	q->prev = q;
+
 	curr = p->head;
 	if(curr == nil) {
 		p->head = q;
@@ -198,28 +197,19 @@ pooladd(Pool *p, Bhdr *q)
 			return;
 		}
 
-		if(q->size > curr->size){
-			if (curr->next != nil) {
-				curr = curr->next;
-			} else {
-				curr->next = q;
-				q->prev = curr;
-				return;
-			}
-		}
+		if(q->size > curr->size)
+			curr = curr->next;
+
 		else{
 			q->next = curr;
 			q->prev = curr->prev;
 			if (curr->prev != nil)
 				curr->prev->next = q;
-			else
-				p->head = q;
 			curr->prev = q;
 			return;
 		}
 	}
 }
-
 static void
 showlist(Pool *p)
 {
@@ -227,7 +217,7 @@ showlist(Pool *p)
 
 	print("free list:\n");
 	for(b = p->head; b != nil; b = b->next)
-		print("\t%p size=%lud prev=%p next=%p\n", b, b->size, b->prev,b->next);
+		print("\t%p size=%lud next=%p\n", b, b->size, b->next);
 }
 
 static void
@@ -241,29 +231,25 @@ verifylist(Pool *p)
 					b, b->size, b->next, b->next->size);	
 	}
 }
-
 void
-freeListTest(void)
+pooltest(void)
 {
 	Pool p;
 	Bhdr a;
 	Bhdr b;
 	Bhdr c;
 	Bhdr d;
-	Bhdr e;
 
 	memset(&p, 0, sizeof p);
 	memset(&a, 0, sizeof a);
 	memset(&b, 0, sizeof b);
 	memset(&c, 0, sizeof c);
 	memset(&d, 0, sizeof d);
-	memset(&e, 0, sizeof e);
 
 	a.size = 300;
 	b.size = 100;
 	c.size = 500;
 	d.size = 200;
-	e.size = 400;
 
 	p.head = nil;
 
@@ -286,32 +272,11 @@ freeListTest(void)
 	pooladd(&p, &d);
 	showlist(&p);
 	verifylist(&p);
-	
-	print("add 400\n");
-	pooladd(&p, &e);
-	showlist(&p);
-	verifylist(&p);
-
-	print("del 300\n");
-	pooldel(&p, &a);
-	showlist(&p);
-	verifylist(&p);
-
-	print("del 100\n");
-	pooldel(&p, &b);
-	showlist(&p);
-	verifylist(&p);
-
-	print("del 500\n");
-	pooldel(&p, &c);
-	showlist(&p);
-	verifylist(&p);
 }
-
 static void*
 dopoolalloc(Pool *p, ulong asize, ulong pc)
 {
-	Bhdr *q, *l;
+	Bhdr *q, *t;
 	int alloc, ldr, ns, frag;
 	int osize, size;
 
@@ -324,40 +289,40 @@ dopoolalloc(Pool *p, ulong asize, ulong pc)
 	lock(&p->l);
 	p->nalloc++;
 
-	l = p->head;
+	t = p->head;
 	q = nil;
-	while(l) {
-		if(l->size == size) {
-			pooldel(p, l);
-			l->magic = MAGIC_A;
-			p->cursize += l->size;
+	while(t) {
+		if(t->size == size) {
+			pooldel(p, t);
+			t->magic = MAGIC_A;
+			p->cursize += t->size;
 			if(p->cursize > p->hw)
 				p->hw = p->cursize;
 			unlock(&p->l);
 			if(p->monitor)
-				MM(p->pnum, pc, (ulong)B2D(l), size);
-			return B2D(l);
-		}else if (l->size > size){
-			pooldel(p, l);
-			l->magic = MAGIC_A;
-			frag = l->size - size;
+				MM(p->pnum, pc, (ulong)B2D(t), size);
+			return B2D(t);
+		}else if (t->size > size){
+			pooldel(p, t);
+			t->magic = MAGIC_A;
+			frag = t->size - size;
 			if (frag >= (size >> 2) && frag >= 0x8000){
-				l->size = size;
-				B2T(l)->hdr = l;
-				q = B2NB(l);
+				t->size = size;
+				B2T(t)->hdr = t;
+				q = B2NB(t);
 				q->size = frag;
 				B2T(q)->hdr = q;
 				pooladd(p,q);
 			}
-			p->cursize += l->size;
+			p->cursize += t->size;
 			if (p->cursize > p->hw)
 				p->hw = p->cursize;
 			unlock(&p->l);
 			if (p->monitor)
 				MM(p->pnum, pc, (ulong)B2D(q), size);
-			return B2D(l);
+			return B2D(t);
 		}else{
-			l = l->next;
+			t = t->next;
 		}
 	}
 
@@ -388,8 +353,8 @@ dopoolalloc(Pool *p, ulong asize, ulong pc)
 	}
 
 	p->nbrk++;
-	l = (Bhdr *)sbrk(alloc);
-	if(l == (void*)-1) {
+	t = (Bhdr *)sbrk(alloc);
+	if(t == (void*)-1) {
 		p->nbrk--;
 		unlock(&p->l);
 		return nil;
@@ -404,21 +369,21 @@ dopoolalloc(Pool *p, ulong asize, ulong pc)
 		};
 
 		const ulong align = (off - 1) % 16;
-		l = (Bhdr *)(((ulong)t + align) & ~align);
+		t = (Bhdr *)(((ulong)t + align) & ~align);
 	}
 #else
 	/* Double alignment */
-	l = (Bhdr *)(((ulong)l + 7) & ~7);
+	t = (Bhdr *)(((ulong)t + 7) & ~7);
 #endif
-	if(p->chain != nil && (char*)l-(char*)B2LIMIT(p->chain)-ldr == 0){
+	if(p->chain != nil && (char*)t-(char*)B2LIMIT(p->chain)-ldr == 0){
 		/* can merge chains */
-		if(0)print("merging chains %p and %p in %s\n", p->chain, l, p->name);
+		if(0)print("merging chains %p and %p in %s\n", p->chain, t, p->name);
 		q = B2LIMIT(p->chain);
 		q->magic = MAGIC_A;
 		q->size = alloc;
 		B2T(q)->hdr = q;
-		l = B2NB(q);
-		l->magic = MAGIC_E;
+		t = B2NB(q);
+		t->magic = MAGIC_E;
 		p->chain->csize += alloc;
 		p->cursize += alloc;
 		unlock(&p->l);
@@ -426,35 +391,35 @@ dopoolalloc(Pool *p, ulong asize, ulong pc)
 		return poolalloc(p, osize);
 	}
 	
-	l->magic = MAGIC_E;		/* Make a leader */
-	l->size = ldr;
-	l->csize = ns+ldr;
-	l->clink = p->chain;
-	p->chain = l;
-	B2T(l)->hdr = l;
-	l = B2NB(l);
+	t->magic = MAGIC_E;		/* Make a leader */
+	t->size = ldr;
+	t->csize = ns+ldr;
+	t->clink = p->chain;
+	p->chain = t;
+	B2T(t)->hdr = t;
+	t = B2NB(t);
 
-	l->magic = MAGIC_A;		/* Make the block we are going to return */
-	l->size = size;
-	B2T(l)->hdr = l;
-	q = l;
+	t->magic = MAGIC_A;		/* Make the block we are going to return */
+	t->size = size;
+	B2T(t)->hdr = t;
+	q = t;
 
 	ns -= size;			/* Free the rest */
 	if(ns > 0) {
-		q = B2NB(l);
+		q = B2NB(t);
 		q->size = ns;
 		B2T(q)->hdr = q;
 		pooladd(p, q);
 	}
 	B2NB(q)->magic = MAGIC_E;	/* Mark the end of the chunk */
 
-	p->cursize += l->size;
+	p->cursize += t->size;
 	if(p->cursize > p->hw)
 		p->hw = p->cursize;
 	unlock(&p->l);
 	if(p->monitor)
-		MM(p->pnum, pc, (ulong)B2D(l), size);
-	return B2D(l);
+		MM(p->pnum, pc, (ulong)B2D(t), size);
+	return B2D(t);
 }
 
 void *
@@ -552,17 +517,17 @@ poolmsize(Pool *p, void *v)
 static ulong
 poolmax(Pool *p)
 {
-	Bhdr *l;
+	Bhdr *t;
 	ulong size;
 
 	lock(&p->l);
 	size = p->maxsize - p->cursize;
-	l = p->head;
-	if(l != nil) {
-		while(l->next != nil)
-			l = l->next;
-		if(size < l->size)
-			size = l->size;
+	t = p->head;
+	if(t != nil) {
+		while(t->next != nil)
+			t = t->next;
+		if(size < t->size)
+			size = t->size;
 	}
 	if(size >= BHDRSIZE)
 		size -= BHDRSIZE;

@@ -1,0 +1,69 @@
+implement Allocperf;
+
+include "sys.m";
+	sys: Sys;
+include "draw.m";
+
+Allocperf: module
+{
+	init:	fn(nil: ref Draw->Context, nil: list of string);
+};
+
+Nblock: con 800;
+Nlarge: con 32;
+Nrun: con 500;
+Largesize: con 262144;
+Refillsize: con 131072;
+
+work()
+{
+	block: array of array of byte;
+	large: array of array of byte;
+	i: int;
+	size: int;
+
+	block = array[Nblock] of array of byte;
+
+	for(i = 0; i < Nblock; i++) {
+		size = 64 + (i % 16) * 257;
+		block[i] = array[size] of byte;
+		block[i][0] = byte i;
+	}
+
+	for(i = 0; i < Nblock; i = i + 2)
+		block[i] = nil;
+
+	for(i = 0; i < Nblock; i = i + 2) {
+		size = 96 + (i % 13) * 311;
+		block[i] = array[size] of byte;
+		block[i][0] = byte i;
+	}
+
+	large = array[Nlarge] of array of byte;
+
+	for(i = 0; i < Nlarge; i++) {
+		large[i] = array[Largesize] of byte;
+		large[i][0] = byte i;
+	}
+
+	for(i = 0; i < Nlarge; i = i + 2)
+		large[i] = nil;
+
+	for(i = 0; i < Nlarge; i = i + 2) {
+		large[i] = array[Refillsize] of byte;
+		large[i][0] = byte i;
+	}
+
+	block = nil;
+	large = nil;
+}
+
+init(nil: ref Draw->Context, nil: list of string)
+{
+	i: int;
+
+	sys = load Sys Sys->PATH;
+
+	for(i = 0; i < Nrun; i++)
+		work();
+}
